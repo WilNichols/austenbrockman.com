@@ -57,15 +57,15 @@ $spanColumns: calc((var(--columnCount) * var(--minColumnWidth)) + ((var(--column
   --negative-color, 
     #{$c--white}, 
     #{$c--white}, 
-    #{$c--black}, 
-    #{$c--black}
+    #{$c--white}, 
+    #{$c--white}
   );
   @include themedColor(
   --positive-color, 
     #{$c--black}, 
     #{$c--black}, 
-    #{$c--white}, 
-    #{$c--white}
+    #{$c--black}, 
+    #{$c--black}
   );
   @include themedColor(
   --white-color, 
