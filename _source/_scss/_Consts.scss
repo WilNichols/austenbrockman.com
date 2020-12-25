@@ -1,0 +1,85 @@
+$fontstack-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif; 
+
+$font--size-base:                     14px !default;
+$font--size-small:                    $font--size-base * 0.875 !default;
+$font--line_height:                   17px !default;
+
+$unit--spacing:                       26px !default;
+$unit--spacing-sm:                    16px !default;
+$unit--animation-l-duration:          0.4s !default;
+$unit--animation-duration:            0.2s !default;
+$unit--animation-s-duration:          0.1s !default;
+
+// breakpoint ranges
+// width of xlarge + viewport-padding on each side
+$unit--breakpoint-xlarge-block:       1310px !default;
+$unit--breakpoint-img:                1280px !default;
+$unitless--breakpoint-xlarge:         1182 !default;
+$unit--breakpoint-xlarge:             1182px !default;
+$unit--breakpoint-large:              872px !default;
+$unit--breakpoint-medium:             720px !default;
+$unit--breakpoint-small:              568px !default;
+$unit--breakpoint-xsmall:             420px !default;
+$unit--breakpoint-xxsmall:            320px !default;
+
+$breakpoints: (
+  "xxSmall":   $unit--breakpoint-xxsmall, 
+  "xSmall":   $unit--breakpoint-xsmall, 
+  "small":    $unit--breakpoint-small, 
+  "medium":   $unit--breakpoint-medium,
+  "large":    $unit--breakpoint-large,
+  "xLarge":   $unit--breakpoint-xlarge,
+  "phone": 320px,
+  "tablet": 768px,
+  "desktop": 1024px
+);
+
+// photo sizes
+$unit--ratio-landscape:               calc((2 / 3) * 100%);
+$unit--ratio-portrait:                calc((3 / 2) * 100%);
+
+// padding
+$unit--padding-large:                 4rem;
+$unit--padding-medium:                3rem;
+$unit--padding-small:                 2rem;
+
+// z-indices
+$unit--level-xtop:                    10000;
+$unit--level-top:                     1000;
+$unit--level-middle:                  100;
+$unit--level-bottom:                  10;
+$unit--level-xbottom:                 0;
+$unit--level-below:                   -10;
+
+// misc
+$unit--header-height:                 63px;
+$unit--header-glyph-height:           22px;
+
+$shorthand--animation-basic:          $unit--animation-duration ease-out;
+
+// device proportions that are used in multiple places
+// iPhone 4
+$iPhone4sF--device-width:   384;
+$iPhone4sF--device-height:  746;
+$iPhone4sF--screen-width:   320;
+$iPhone4sF--screen-height:  480;
+
+$iPhone4sS--device-width:   324;
+$iPhone4sS--device-height:  738;
+
+// iPhone 8
+$iPhone8--A-width:         433;
+$iPhone8--A-height:        881;
+$iPhone8--BC-width:        365;
+$iPhone8--BC-height:       933;
+$iPhone8--DE-width:        301;
+$iPhone8--DE-height:       881;
+$iPhone8--FG-width:        547;
+$iPhone8--FG-height:       896;
+$iPhone8--H-width:         1088;
+$iPhone8--H-height:        896;
+$iPhone8--I-width:         1325;
+$iPhone8--I-height:        896;
+
+$iPhone8--screen-width:    375;
+$iPhone8--screen-height:   667;

@@ -1,0 +1,78 @@
+{%- capture title -%}
+  {% if site.title and page.title %}
+    {{ site.name }} | {{ page.title }}
+  {% elsif page.title == undefined %}
+    {{ site.title }}
+  {% endif %}
+{%- endcapture -%}
+
+{%- capture description -%}
+  {% if site.description and page.pageType == 'index' %}
+    {{ site.description }}
+  {% elsif site.description and page.description %}
+    {{ page.description }} 
+    {{ page.description | default: site.title }}
+  {% elsif page.pageType != 'index' %}
+    {{ page.excerpt | strip_html }}
+  {% endif %}
+{%- endcapture -%}
+
+{%- capture type -%}
+  {% if page.pageType == 'blog-post' %}
+    article
+  {% elsif page.pageType == 'blog' %}
+    blog
+  {% else %}
+    website
+  {% endif %}
+{%- endcapture -%}
+
+{%- capture siteURL -%}
+  {{ site.url }}{{ page.url | replace:'index.html',''}}
+{%- endcapture -%}
+
+{%- capture imagePreview -%}
+  {% if page.image and page.pageType == 'gallery' %}
+    https://wilnichols.imgix.net/{{ page.directory | remove: "assets/img/" }}{{ page.image }}.jpg?w=1280
+  {% elsif page.image and page.pageType != 'gallery' %}
+    {{ site.url }}{{ page.directory }}{{ page.image }}
+  {% else %}
+    {{ site.url }}/assets/img/site-icon/og-preview.png
+  {% endif %}
+{%- endcapture -%}
+<!-- start meta -->
+<!-- siteName -->
+<meta property="og:site_name" content="{{ site.title }}" />
+<!-- endSiteName -->
+<!-- title -->
+<title>{{title}}</title>
+<meta property="og:title" content="{{ title | strip | strip_newlines }}" />
+<meta property="twitter:title" content="{{ title | strip | strip_newlines }}" />
+<!-- endTitle -->
+<!-- type -->
+<meta property="og:type" content="{{ type | strip | strip_newlines}}" />
+<!-- endType -->
+<!-- description -->
+<meta name="description" content="{{ description | strip | strip_newlines}}" />
+<meta property="og:description" content="{{ description | strip | strip_newlines}}" />
+<!-- endDescription -->
+<!-- siteURL -->
+<link rel="canonical" href="{{ siteURL | strip }}" />
+<meta property="og:url" content="{{ siteURL | strip | strip_newlines}}" />
+<!-- endSiteURL -->
+<!-- imagePreview -->
+<meta property="og:image" content="{{ imagePreview | strip }}" />
+<meta property="twitter:image" content="{{ imagePreview | strip }}" />
+<!-- endImagePreview -->
+<!-- twitterSettings -->
+<meta name="twitter:card" content="{{ site.social.twitterCard | strip }}" />
+<meta name="twitter:site" content="{{ site.social.twitterHandle | strip }}" />
+<!-- endTwitterSettings -->
+<!-- articlePublishTime -->
+{% if page.type == 'blog-post' %}
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema | strip }}" />
+{% endif %}
+<!-- endArticlePublishTime -->
+<meta property="og:locale" content="en_US" />
+
+<!-- end meta -->

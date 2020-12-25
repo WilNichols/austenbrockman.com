@@ -1,0 +1,111 @@
+:root {
+  --roundedCorner: 5px;
+  @include media("≤small") { 
+    --viewport-padding: #{$unit--padding-small};
+    --gutter: #{$unit--spacing-sm};
+  }
+  @include media(">small", "≤medium") {
+    --viewport-padding: #{$unit--padding-medium};
+    --gutter: #{$unit--spacing};
+  }
+  @include media(">medium") {
+    --viewport-padding: #{$unit--padding-large};
+    --gutter: #{$unit--spacing};
+  }
+  --gridColsMax: 12;
+  --gridColsMin: 6;
+  --containerWidth: 100vw - (var(--viewport-padding) * 2);
+  --minColumnWidth: calc((var(--containerWidth) - (var(--gutter) * (var(--gridColsMax) - 1))) / var(--gridColsMax));
+  --maxContainerWidth: #{$unit--breakpoint-xlarge};
+  --maxColumnWidth: calc((var(--maxContainerWidth) - (var(--gutter) * (var(--gridColsMax) - 1))) / var(--gridColsMax));
+  
+  // size to columns w/o using display: grid
+  --full-grid-width: 100%;
+  --two-thirds-grid-width: ((200% - var(--gutter)*4)/3) + var(--gutter);
+  --half-grid-width: (100% - var(--gutter))/2;
+  --one-third-grid-width: (100% - var(--gutter)*2)/3;
+  --quarter-grid-width: (100% - var(--gutter)*3)/4;
+  --fifth-grid-width: (100% - var(--gutter)*4)/5;
+  
+  // fakes grid positioning on nongrid els
+  --startSecondHalf: calc(50vw - var(--viewport-padding) + (var(--gutter) / 2));
+  
+  //spacer as padding
+  --paddingGridSpacer: min(116px, calc((var(--gutter) * 2) + (var(--minColumnWidth) + (var(--gutter) * 2))/2));;
+  
+}
+
+$spanColumns: calc((var(--columnCount) * var(--minColumnWidth)) + ((var(--columnCount) - 1) * var(--gutter)));
+
+//theme vars
+:root {
+  @include themedColor(
+  --theme-light, 
+    #{$c--white}, 
+    #{$c--white}, 
+    #{$c--white}, 
+    #{$c--white}
+  );
+  @include themedColor(
+  --theme-dark, 
+    #{$c--black}, 
+    #{$c--black}, 
+    #{$c--black}, 
+    #{$c--black}
+  );
+  @include themedColor(
+  --negative-color, 
+    #{$c--white}, 
+    #{$c--white}, 
+    #{$c--black}, 
+    #{$c--black}
+  );
+  @include themedColor(
+  --positive-color, 
+    #{$c--black}, 
+    #{$c--black}, 
+    #{$c--white}, 
+    #{$c--white}
+  );
+  @include themedColor(
+  --white-color, 
+    #{$c--white}, 
+    #{$c--white}, 
+    #{$c--white}, 
+    #{$c--white}
+  );
+  @include themedColor(
+  --black-color, 
+    #{$c--black}, 
+    #{$c--black}, 
+    #{$c--black}, 
+    #{$c--black}
+  );
+  @include themedColor(
+  --accentColor,
+    #{$c--accent}, 
+    #{$c--accent-P3}, 
+    #{$c--accent},  
+    #{$c--accent-P3}
+  );
+@include themedColor(
+  --accentColorDark,
+    #{$c--accent_mid}, 
+    #{$c--accent_mid-P3}, 
+    #{$c--accent_mid},  
+    #{$c--accent_mid-P3}
+  );
+  @include themedColor(
+  --theme-debug,
+    red, 
+    red, 
+    red,  
+    red,  
+  );
+  // 3rd-party
+  --twitterColor: #38A1F3;
+  --linkedInColor: #0077B5;
+  --gitHubColor: #0366d6;
+  --instagramColor: #C13584;
+  --dribbbleColor: #ea4c89;
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  {%- include head.html -%}
+<body class="{{ page.pageType }} {{ page.title | remove: " " }}">
+  {% if jekyll.environment != 'production' %}
+    {%- include debug.html -%}
+  {% endif %}
+    <header class="header">
+      
+    </header>
+    <main class="pageContent">
+      {{ content }}
+    </main>
+    {%- include footer.html -%}
+  </body>
+</html>

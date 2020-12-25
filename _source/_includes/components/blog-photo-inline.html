@@ -1,0 +1,60 @@
+{% if include.description %}
+  {% assign caption = include.description %}
+{% endif %}
+
+{% if include.class %}
+  {% assign class = include.class %}
+{% endif %}
+
+{% if include.alt %}
+  {% assign alt = include.alt %}
+{% endif %}
+
+{% if include.type %}
+{% assign type = include.type %}
+{% else %}
+{% assign type = 'jpg' %}
+{% endif %}
+
+{%- capture blogPath -%}{{ include.imagePath }}/{{ include.name }}.{{ type }}{%- endcapture -%}
+
+{%- capture src -%}
+{%- if jekyll.environment != 'production' -%}{{ blogPath }}{%- endif -%}
+{%- if jekyll.environment == 'production' -%}https://wilnichols.imgix.net/{{ blogPath | remove: "/assets/img/" }}{%- endif -%}
+{%- endcapture -%}
+
+{% if page.title %}
+  {% assign group = page.title %}
+{% endif %}
+
+<figure>
+  <picture>
+    {%- if jekyll.environment != 'production' -%}
+      <img src="{{ src }}" alt="{{ alt }}" class="{{ class }}" data-collection="{{ group | escape }}"/>
+    {%- endif -%}
+    {%- if jekyll.environment == 'production' -%}
+      <!--[if IE 9]><video style="display: none"><![endif]-->
+    	<source
+    		data-srcset="{{src}}{%- if jekyll.environment == 'production' -%}?w=500{%- endif -%}"
+    		media="(max-width: 500px)" />
+    	<source
+    			data-srcset="{{src}}{%- if jekyll.environment == 'production' -%}?w=1000{%- endif -%}"
+    			media="(max-width: 1000px)" />
+    	<source
+    			data-srcset="{{src}}{%- if jekyll.environment == 'production' -%}?w=2000{%- endif -%}" />
+      <!--[if IE 9]></video><![endif]-->
+      <img
+      		src="{{src}}{%- if jekyll.environment == 'production' -%}?w=500{%- endif -%}"
+      		data-src="{{src}}{%- if jekyll.environment == 'production' -%}?w=2000{%- endif -%}"
+      		data-collection="{{ group | escape }}"
+      		class="lazyload {{ class }}"
+      		alt="{{ alt }}" />
+    {%- endif -%}
+    {% if class="lightbox" %}
+    <div class="touch icon-expand">{%- include svg/expand-photo.svg -%}</div>
+    {% endif %}
+  </picture>
+  {% if caption %}
+  <figcaption>{{ caption }}</figcaption>
+  {% endif %}
+</figure>

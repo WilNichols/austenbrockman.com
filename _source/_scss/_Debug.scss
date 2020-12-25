@@ -1,0 +1,107 @@
+body:not(.debug) {
+  &::before {
+    content: none;
+  }
+  ul.debug-grid {
+    display: none;
+  }
+}
+
+body {
+  &::before {
+    content: '';
+    position: fixed;
+    @include share(top, left, 50%);
+    @include share(width, height, .5rem);
+    transform: translate(-.25rem, -.25rem);
+    border-radius: var(--roundedCorner);
+    background-color: var(--theme-debug);
+    z-index: $unit--level-xtop;
+  }
+  ul.debug-grid {
+    position: fixed;
+    z-index: 10000;
+    height: 100vh;
+    @extend %grid;
+    @extend %wrapper;
+    list-style: none;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    max-width: calc(#{$unit--breakpoint-xlarge} + var(--viewport-padding) * 2) !important;
+    padding: 0 var(--viewport-padding);
+    li {
+      opacity: .25;
+      height: 100vh;
+      background-color: var(--theme-debug);
+      pointer-events: none;
+    }
+    body.debug & {
+      display: grid !important;
+    }
+  }
+  .viewport-measure {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    width: auto;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    vertical-align: middle;
+    padding: 0 .5rem;
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-radius: var(--roundedCorner);
+    background-color: rgba(4, 4, 15, .45);
+    z-index: 99999999999;
+    pointer-events: auto;
+    cursor: pointer;
+    span {
+      display: none;
+      font-size: 1rem;
+      color: #fff;
+      font-family: -apple-system !important;
+      @include media("≤xxSmall") {
+        &.xxsmall {
+          display: inline-block;
+        }
+      }
+      @include media(">xxSmall", "≤xSmall") {
+        &.xsmall {
+          display: inline-block;
+        }
+      }
+      @include media(">xSmall", "≤small") {
+        &.small {
+          display: inline-block;
+        }      
+      }
+      @include media(">small", "≤medium") {
+        &.medium {
+          display: inline-block;
+        }
+      }
+      @include media(">medium", "≤large") {
+        &.large {
+          display: inline-block;
+        }
+      }
+      @include media(">large", "≤xLarge") {
+        &.xlarge {
+          display: inline-block;
+        }
+      }
+      @include media(">xLarge") {
+        &.xxlarge {
+          display: inline-block;
+        }
+      }
+      &.vwidth {
+        &::before {
+          content: ': ';
+        }
+        display: inline-block;
+      }
+    }
+  }
+}

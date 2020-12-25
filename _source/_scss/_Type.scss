@@ -1,0 +1,357 @@
+body {
+  font-family: obviously, sans-serif;
+  font-style: normal;
+}
+
+%fontSize {
+  --font-size: calc(var(--rem) * #{$font--size-base});
+  font-size: var(--font-size);
+  line-height: var(--lineHeight);
+}
+
+H1, %H1 {
+  font-weight: 600;
+  @extend %fontSize;
+  font-size: min(10vw, var(--font-size));
+  color: var(--theme-gray-further);
+  @include media("≤xxSmall") {
+    --rem: 2.5;
+    --lineHeight: 1em;
+  }
+  @include media(">xxSmall", "≤small") {
+    --rem: 3;
+    --lineHeight: 1.25em;
+  }
+  @include media(">small", "≤medium") {
+    --rem: 3.75;
+    --lineHeight: 1.125em;
+  }
+  @include media(">medium") {
+    --rem: 7;
+    --lineHeight: 1.125em;
+  }
+  @include media('print') {
+    --rem: 2.5;
+    --lineHeight: 1.25em;
+  }
+
+}
+
+// Section Title
+H2, %H2 {
+  font-weight: 900;
+  @extend %fontSize;
+  color: var(--theme-gray-further);
+  @include media("≤xxSmall") {
+    --rem: 2;
+    --lineHeight: 1em;
+  }
+  @include media(">xxSmall", "≤small") {
+    --rem: 2.5;
+    --lineHeight: 1.125em;
+  }
+  @include media(">small", "≤medium") {
+    --rem: 3;
+    --lineHeight: 1.25em;
+  }
+  @include media(">medium") {
+    --rem: 3.5;
+    --lineHeight: 1.25em;
+  }
+  @include media('print') {
+    --rem: 1.5;
+    --lineHeight: 1.25em;
+  }
+}
+
+// Subsection Title
+H3, %H3 {
+  font-weight: 800;
+  @extend %fontSize;
+  color: var(--theme-gray-far);
+   @include media("≤xxSmall") {
+    --rem: 1.375;
+    line-height: 1.364em;
+  }
+  @include media(">xxSmall", "≤small") {
+    --rem: 1.375;
+    --lineHeight: 1.364em;
+  }
+  @include media(">small", "≤medium") {
+    --rem: 1.5;
+    --lineHeight: 1.25em;
+  }
+  @include media(">medium") {
+    --rem: 1.75;
+    --lineHeight: 1.25em;
+  }
+  @include media('print') {
+    --rem: 1.125;
+    --lineHeight: 1.25em;
+  }
+  &.secondary {
+    color: var(--theme-gray-close);
+  }
+}
+
+// Paragraph or Form Heading
+H4, %H4 {
+  font-weight: 600;
+  @extend %fontSize;
+  color: var(--theme-gray-further);
+  @include media("≤xxSmall") {
+    --rem: 1.125;
+    --lineHeight: 1.111em;
+  }
+  @include media(">xxSmall", "≤medium") {
+    --rem: 1.125;
+    --lineHeight: 1.111em;
+  }
+  @include media(">medium") {
+    --rem: 1.125;
+    --lineHeight: 1.222em;
+  }
+  @include media('print') {
+    --rem: .875;
+    --lineHeight: 1.25em;
+  }
+}
+
+
+// with H1
+.subheading, %subheading, h5, h4.secondary {
+  display: inline;
+  
+  font-weight: 600;
+  @extend %fontSize;
+  color: var(--theme-gray-base);
+  @include media("≤xxSmall") {
+    --rem: .875;
+    --lineHeight: 1em;
+  }
+  @include media(">xxSmall", "≤medium") {
+    --rem: 1.125;
+    line-height: 1.111em;
+  }
+  @include media(">medium") {
+    --rem: 1.125;
+    --lineHeight: 1.222em;
+  }
+  @include media('print') {
+    --rem: .875;
+    --lineHeight: 1.25em;
+  }
+}
+
+// with H2
+.secondarySubheading, h6, h5.secondary {
+  display: inline;
+  
+  font-weight: 600;
+  @extend %fontSize;
+  color: var(--theme-gray-base);
+  @include media("≤xxSmall") {
+    --rem: .875;
+    --lineHeight: 1em;
+  }
+  @include media(">xxSmall", "≤medium") {
+    --rem: 1;
+    line-height: 1.125em;
+  }
+  @include media(">medium") {
+    --rem: 1;
+    line-height: 1.375em;
+  }
+  @include media('print') {
+    --rem: .75;
+    line-height: 1.25em;
+  }
+}
+
+// Captions
+figcaption, .caption, .caption *, %caption {
+  font-weight: 400;
+  @extend %fontSize;
+  color: var(--theme-gray-base);
+  @include media("≤xxSmall") {
+    --rem: .875;
+    line-height: 1.4428em;
+  }
+  @include media(">xxSmall", "≤medium") {
+    --rem: .875;
+    --lineHeight: .1.428em;
+  }
+  @include media(">medium") {
+    --rem: .875;
+    --lineHeight: 1.418em;
+  }
+  @include media('print') {
+    --rem: .75;
+    --lineHeight: 1.25em;
+  }
+}
+
+// Captions
+footer, .footer {
+  display: inline;
+  
+  font-weight: 400;
+  @extend %fontSize;
+  color: var(--theme-gray-further);
+  z-index: 10;
+  position: relative;
+  @include media("≤medium") {
+    --rem: .75;
+    --lineHeight: 1.333em;
+  }
+  @include media(">medium") {
+    --rem: .75;
+    --lineHeight: 1.418em;
+  }
+  @include media('print') {
+    --rem: .75;
+    --lineHeight: 1.333em;
+  }
+}
+
+// Block Quotes
+blockquote {
+  display: inline;
+  
+  font-weight: 400;
+  @extend %fontSize;
+  color: var(--theme-gray-further);
+  @include media("≤small") {
+    --rem: 1.25;
+    --lineHeight: 1.25em;
+  }
+  @include media(">small", "≤medium") {
+    --rem: 1.25;
+    --lineHeight: 1.333em;
+  }
+  @include media("≥medium") {
+    --rem: 1.5;
+    --lineHeight: 1.5em;
+  }
+  @include media('print') {
+    --rem: 1.5;
+    --lineHeight: 1.5em;
+  }
+}
+// navText
+%navText {
+  @extend %fontSize;
+  @include media("≤xxSmall") {
+    --rem: .75;
+    --lineHeight: 1em;
+  }
+  @include media(">xxSmall", "≤small") {
+    --rem: .875;
+    --lineHeight: 1.25em;
+  }
+  @include media("≥small") {
+    --rem: 1;
+    --lineHeight: 1.375em;
+  }
+  @include media('print') {
+    --rem: .75;
+    --lineHeight: 1.25em;
+  }
+}
+
+%default {
+  font-weight: var(--fontWeight, 400);
+  @extend %fontSize;
+}
+
+%paragraphText {
+  @include media("≤small") {
+    --rem: 1;
+    --lineHeight: 1.375em;
+  }
+  @include media(">small") {
+    --rem: 1;
+    --lineHeight: 1.5em;
+  }
+  @include media('print') {
+    --rem: .75;
+    --lineHeight: 1.25em;
+  }
+}
+
+.bigText {
+  font-weight: var(--fontWeight, 400);
+  @extend %fontSize;
+  @include media("≤small") {
+    --rem: 1;
+    --lineHeight: 1.5em;
+  }
+  @include media(">small", "≤medium") {
+    --rem: 1.125;
+    line-height: 1.625em;
+  }
+  @include media(">medium") {
+    --rem: 1.25;
+    --lineHeight: 1.75em;
+  }
+  @include media('print') {
+    --rem: .875;
+    --lineHeight: 1.25em;
+  }
+}
+
+// Paragraph Text
+body {
+  @extend %default;
+  @extend %paragraphText;
+  color: var(--theme-gray-further);
+  p, span {
+      display: inline;
+      // for some reason, this has to be defined here for the transition to not be delayed
+      color: var(--theme-gray-further);
+  }
+  a {
+    display: inline;
+  }
+}
+
+.asideText p, .asideText li {
+  @include media("≤medium") {
+    color: var(--theme-gray-further);
+  }
+  @include media(">medium") {
+    color: var(--theme-gray-base);
+  }
+}
+
+.photoSetTitle, .featuredPhotoSetTitle {
+  @extend h5;
+  top: .75rem;
+}
+
+.photoSetDate, .featuredPhotoSetDate {
+  @extend %caption;
+  bottom: .75rem;
+}
+
+%Medium {
+  @extend %default;
+  --fontWeight: 500;
+  @extend %fontSize;
+}
+
+%SemiBold {
+  @extend %default;
+  --fontWeight: 600;
+  @extend %fontSize;
+}
+
+%Bold {
+  @extend %default;
+  --fontWeight: 700;
+  @extend %fontSize;
+}
+
+.textInverted {
+  font-weight: 900;
+}

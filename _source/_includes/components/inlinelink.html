@@ -1,0 +1,2 @@
+{%- capture href -%}{{ include.href | relative_url }}{%- endcapture -%}
+<a href="{{ href }}" class="{{ include.class }} linkTint">{{ include.text }} {%- include svg/arrow-sm.svg -%}</a>

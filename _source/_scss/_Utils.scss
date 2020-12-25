@@ -1,0 +1,513 @@
+%wrapper {
+  max-width: $unit--breakpoint-xlarge;
+  width: 100%;
+  margin: 0 auto;
+}
+
+%grid {
+  display: grid;
+  grid-column-gap: var(--gutter);
+  align-items: start;
+  grid-template-columns: var(--gridCols);
+  @include media("≤small") { 
+    --gridCols: repeat(var(--gridColsMin), 1fr);
+  }
+  @include media(">small") { 
+    --gridCols: repeat(var(--gridColsMax), 1fr);
+  }
+  & > * {
+    grid-row: var(--gridRow);
+    grid-column: var(--gridCol);
+  }
+}
+
+%gridColSpacer {
+  content: '';
+  display: inline-block;
+  margin: var(--gutter) 0;
+  @include share(width, height, calc((var(--minColumnWidth) + (var(--gutter) * 2))/2));
+  @include share(max-width, max-height, calc((var(--maxColumnWidth) + (var(--gutter) * 2))/2));
+}
+
+%linebreakSpacer {
+  content: '';
+  display: inline-block;
+  margin: var(--gutter) 0;
+  @include share(width, height, var(--lineHeight));
+}
+
+%bottomViewMorePadding {
+  @include media("≤medium") { 
+    margin-bottom: 3rem;
+  }
+}
+
+%container {
+  width: 100%;
+  max-width: 32rem;
+  display: block;
+  margin-left: var(--marginLeft, auto);
+  margin-right: var(--marginRight, auto);
+  box-sizing: content-box;
+}
+
+%inlineContentContainer {
+  max-width: $unit--breakpoint-xlarge;
+  width: 100%;
+  @include share(margin-left, margin-right, auto);
+  display: block;
+  box-sizing: content-box;
+  width: 100%;
+}
+
+%shadow {
+  position: relative;
+  &::after {
+    will-change: opacity transform; 
+    content: '';
+    display: block;
+    position: absolute;
+    @include share(top, right, bottom, left, 0);
+    background-color: var(--panelBackgroundColor, transparent);
+    transition: opacity $shorthand--animation-basic, transform $shorthand--animation-basic;
+    box-shadow: 
+            0 0.9px 0.9px rgba(var(--shadowSecondaryColor,  0, 0, 0), 0.056),
+            0 2.1px 2.1px rgba(var(--shadowSecondaryColor,  0, 0, 0), 0.08),
+            0 4px 4px rgba(var(--shadowSecondaryColor,  0, 0, 0), 0.1),
+            0 7.1px 7.1px rgba(var(--shadowSecondaryColor,  0, 0, 0), 0.12),
+            0 13.4px 13.4px rgba(var(--shadowSecondaryColor,  0, 0, 0), 0.144),
+            0 32px 32px rgba(var(--shadowColor,  0, 0, 0), 0.2);
+    opacity: 0.5;
+  }
+}
+
+%shadowInteractive {
+  @extend %shadow;
+  &::after {
+    transition: opacity $shorthand--animation-basic;
+  }
+  &:hover::after {
+    opacity: 1;
+  }
+  &:active::after {
+    opacity: 0.75;
+  }
+}
+
+%strokeInteractive {
+  @media (hover: hover) { 
+    z-index: 10;
+    --line: 2px;
+    --offset: calc(-2 * var(--line));
+    --offset2: 4px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    .strokeEffect {
+      display: block;
+      margin: 0 auto;
+      outline: var(--line) solid var(--negative-color);
+      position: absolute;
+      @include share(top, right, bottom, left, var(--offset2));
+      z-index: 1;
+      background-color: var(--negative-color);
+      &::after, &::before {
+        content: '';
+        position: absolute;
+        will-change: transform;
+        --dim: calc(-2 * var(--line));
+        @include share(top, right, bottom, left, var(--dim));
+        display: block;
+        background-color: var(--tint-strong-color);
+        z-index: -100;
+        transform-origin: bottom left;
+        animation-duration: $unit--animation-l-duration;
+        animation-direction: normal;
+        animation-play-state: running;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-out;
+      }
+      &::before {
+        animation-name: anim1b;
+      }
+      &::after {
+        animation-name: anim2b;
+      }
+    }
+  }
+  @media (hover: none) { 
+    display: none;
+  }
+}
+
+%strokeHover {
+  @media (hover: hover) { 
+    &::before {
+      animation-name: anim1a;
+    }
+    &::after {
+      animation-name: anim2a;
+    }
+  }
+}
+
+.centeredText {
+  text-align: center;
+}
+
+.centeredGridContents {
+  align-items: center;
+}
+// modified states
+:root.lockscroll, :root.lockscroll body {
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+}
+
+@media (hover: hover) { 
+  div[class^="touch"] {
+    display: none !important;
+  }
+}
+
+  @media (hover: none) { 
+  div[class^="notouch"] {
+    display: none !important;
+  }
+}
+
+:root.hairline {
+  --hairline: .5px;
+}
+:root.no-hairline {
+  --hairline: 1px;
+}
+
+// util classes
+
+.hiddenBelowMedium, .hiddenBelowMedium.blockScreenshot {
+  @include media("≤medium") { 
+    display: none !important;
+  }
+}
+.hiddenAboveMedium, {
+  @include media(">medium") { 
+    display: none !important;
+  }
+}
+.hiddenBelowLarge {
+  @include media("≤large") { 
+    display: none !important;
+  }
+}
+.hiddenAboveLarge {
+  @include media(">large") { 
+    display: none !important;
+  }
+}
+
+.hidden {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+%whiteSpaceReset {
+  font-size: 0;
+  & > * {
+    font-size: initial;
+  }
+}
+
+
+.paddingTop {
+  @extend %whiteSpaceReset;
+  &::before {
+    @extend %gridColSpacer;
+  }
+}
+
+.paddingBottom {
+  @extend %whiteSpaceReset;
+  &::after {
+    @extend %gridColSpacer;
+  }
+}
+
+.linebreakTop {
+  @extend %whiteSpaceReset;
+  &::before {
+    @extend %linebreakSpacer;
+  }
+}
+
+.linebreakBottom {
+  @extend %whiteSpaceReset;
+  &::after {
+    @extend %linebreakSpacer;
+  }
+}
+
+// icons
+.icon-close {
+  position: absolute;
+  @include share(top, left, 12px);
+  @include share(width, height, 1.25rem);
+  &::before, &::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 1.25rem;
+    background-color: var(--white-color);
+    position: absolute;
+  }
+  &::before {
+    top: 5px;
+    transform: translateY(3.5px) rotate(45deg);
+  }
+  &::after {
+    bottom: 5px;
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+}
+
+.arrowIcon {
+  @include share(width, height, 1.5rem);
+  position: relative;
+  display: inline-block;
+  --scaleX: 1;
+  .contents {
+    transform: translate(2px, 10px);
+    display: block;
+    --longArm: 19px;
+    --shortArm: .875rem;
+    --leftMargin: 0;
+    .arm1, .arm2, .arm3 {
+      height: 3px;
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: var(--leftMargin);
+      transform-origin: 1.5px 50%;
+      transform: rotate(var(--rotation));
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        @include share(top, right, bottom, left, 0);
+        transform-origin: 0 50%;
+        background-color: var(--iconFill, var(--positive-color));
+        transform: scaleX(var(--scaleX));
+      }
+    }
+    .arm1, .arm3 {
+      width: var(--shortArm);
+    }
+    .arm1 {
+      --rotation: 45deg;
+    }
+    .arm2 {
+      width: var(--longArm);
+      --rotation: 0;
+      left: 1px;
+      &::before {
+        transform-origin: 100% 50%;
+      }
+    }
+    .arm3 {
+      --rotation: -45deg;
+    }
+  }
+}
+
+%visibleBelowMedium {
+  // if not above large, the var will return null and default to the earlier declaration.
+  display: var(--displayNone, inherit);
+  @include media(">medium") {
+    --displayNone: none;
+  }
+}
+
+%visibleAboveMedium {
+  // if not above large, the var will return null and default to the earlier declaration.
+  display: var(--displayNone);
+  @include media("≤medium") {
+    --displayNone: none;
+  }
+}
+
+%visibleBelowLarge, .visibleBelowLarge {
+  // if not above large, the var will return null and default to the earlier declaration.
+  display: var(--displayNone, inherit);
+  @include media(">large") {
+    --displayNone: none;
+  }
+}
+
+%visibleAboveLarge, .visibleAboveLarge {
+  // if not above large, the var will return null and default to the earlier declaration.
+  display: var(--displayNone);
+  @include media("≤large") {
+    --displayNone: none;
+  }
+}
+
+// animations
+@keyframes iconArrowPrimaryArmReverse {
+  0% {
+    transform: scaleX(1);
+  }
+  37.5% {
+    transform: scaleX(1);
+  }
+  98% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+@keyframes iconArrowSecondaryArmReverse {
+  0% {
+    transform: scaleX(1);
+  }
+  37.5% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+@keyframes iconArrowPrimaryArm {
+  0% {
+    transform: scaleX(0);
+  }
+  2% {
+    transform: scaleX(0);
+  }
+  62.5% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes iconArrowSecondaryArm {
+  0% {
+    transform: scaleX(0);
+  }
+  62.5% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes floating-phone {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(var(--containerOffset));
+  }
+}
+@keyframes anim1a {
+  0% {
+    transform: 
+      translateX(calc(-100% + 3px))
+      translateY(calc(100%));
+  }
+  50% {
+    transform: 
+       translateX(calc(-100% + 3px))
+       translateY(0);
+  }
+  100% {
+    transform: 
+      
+      translatX(-3px)
+      translateY(0);
+  }
+}
+@keyframes anim1b {
+  0% {
+    transform: 
+      translateX(0)
+      translateY(0)
+  }
+  50% {
+    transform: 
+      translateX(calc(-100% + 3px))
+      translateY(0);
+  }
+  100% {
+    transform: 
+      translateX(calc(-100% + 3px))
+      translateY(100%);
+  }
+}
+@keyframes anim2a {
+  0% {
+    transform: 
+      translateX(-100%)
+      translateY(calc(100% - 3px));
+  }
+  50% {
+    transform: 
+      translateX(0)
+      translateY(calc(100% - 3px));
+  }
+  100% {
+    transform: 
+      translateX(0)
+      translateY(0)
+  }
+}
+@keyframes anim2b {
+  0% {
+    transform: 
+      translateX(0)
+      translateY(0);
+  }
+  50% {
+    transform: 
+      translateX(0)
+      translateY(calc(100% - 3px));
+  }
+  100% {
+    transform: 
+      translateX(-100%)
+      translateY(calc(100% - 3px));
+  }
+}
+
+@keyframes handWave {
+    0% { transform: rotate(  0.0deg) scale3d(1, 1, 1)}
+   20% { transform: rotate(  0.0deg) scale3d(.9, .9, .9)}
+   20% { transform: rotate(-10.0deg) scale3d(.9, .9, .9)}
+   40% { transform: rotate( 12.0deg) scale3d(.9, .9, .9)}
+   60% { transform: rotate(-10.0deg) scale3d(1.1, 1.1, 1.1)}
+   80% { transform: rotate(  9.0deg) scale3d(1.1, 1.1, 1.1)}
+  100% { transform: rotate(  0.0deg) scale3d(1, 1, 1)}
+}
+
+
+@keyframes stackingScreenHorizontal3 {
+  0%, 3% { 
+    transform: translateX(0);
+  }
+  30.33%, 36.33% { 
+    transform: translateX(-100%);
+  }
+  63.33%, 69.67% { 
+    transform: translateX(-200%);
+  }
+  97%, 100% { 
+    transform: translateX(-300%);
+  }
+
+}

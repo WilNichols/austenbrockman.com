@@ -1,0 +1,102 @@
+---
+---
+@charset "Utf-8";
+
+@import "Reset";
+@import "Vendor/include-media";
+
+@import "Themes/1";
+@import "Consts";
+@import "Mixins";
+
+@import "Vars";
+@import "Utils";
+@import "Debug";
+@import "Type";
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  @include user-select(none);
+}
+
+:root {
+  background-color: var(--negative-color);
+  @include share(padding, margin, 0);
+  font-size: $font--size-base;
+  min-height: 100vh;
+  min-width: $unit--breakpoint-xxsmall;
+  color-scheme: light dark
+}
+
+body {
+  background-color: var(--accentColor);
+  @include share(margin, padding, 0);
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  
+}
+
+a {
+  text-decoration: none;
+  color: var(--tint-strong-color);
+  &.twitterLink {
+    color: var(--twitterColor);
+  }
+  &.linkedInLink {
+    color: var(--linkedInColor);
+  }
+  &.instagramLink {
+    color: var(--instagramColor);
+  }
+  &.gitHubLink {
+    color: var(--gitHubColor);
+  }
+  &.dribbbleLink {
+    color: var(--dribbbleColor);
+  }
+}
+
+::selection {
+  background: var(--selectionColor, var(--positive-color));
+  color: var(--negative-color);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--positive-color);
+  color: var(--negative-color);
+  text-shadow: none;
+}
+
+.pageContent {
+  padding: 0 var(--viewport-padding);
+}
+  
+// make text elements selectable
+p, a:not(.blockLink), h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhotoSetTitle, .featuredPhotoSetDate, .photoSetTitle, .photoSetDate, .postTags, .postDateLarge, .postDate, .postDateSmall, .footerContent, .footerCopyright, li.tag, input, button, li, .resumeJobTitle {
+  @include user-select(text);
+  svg {
+    @include user-select(none);
+  }
+}
+
+.footer {
+  text-align: center;
+  display: block;
+  position: absolute;
+  @include share(left, right, var(--viewport-padding));
+  bottom: max(var(--viewport-padding), env(safe-area-inset-bottom, 0px));
+  & > * {
+    @include share(height, line-height, 1.5rem);
+    display: inline-block;
+  }
+}
+
+
+@import "Pages/Work";
+
+
