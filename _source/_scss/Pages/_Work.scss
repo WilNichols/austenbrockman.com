@@ -37,7 +37,7 @@
 
 // Section: About
 
-.aboutMeContainer, .photoHeaderContainer,  {
+.aboutMeContainer, .giftContainer {
   @extend %grid;
   align-items: center;
 }
@@ -49,7 +49,7 @@
   margin-bottom: 1rem;
   @include media("≤small") {
     --gridCol: 1 / 7;
-    -gridRow: 2 / 3;
+    --gridRow: 2 / 3;
   }
   @include media(">small", "≤medium") {
     --gridCol: 2 / 10;
@@ -59,21 +59,76 @@
   }
 }
 
-.bigText  {
+.bigText:not(.giftText)  {
   position: relative;
   z-index: 1;
   --gridRow: 3 / 4;
   @include media("≤small") {
     --gridCol: 1 / 7;
-    -gridRow: 3 / 4;
+    --gridRow: 2 / 3;
   }
   @include media(">small", "≤medium") {
     --gridCol: 2 / 5;
+    --gridRow: 2 / 3;
   }
   @include media(">medium") {
     --gridCol: 2 / 7;
   }
 }
+
+.giftText  {
+  position: relative;
+  z-index: 1;
+  z-index: 10;
+  @include media("≤small") {
+    --gridCol: 1 / 7;
+    --gridRow: 2 / 3;
+  }
+  @include media(">small", "≤medium") {
+    --gridCol: 3 / 11;
+    --gridRow: 2 / 3;
+  }
+  @include media(">medium", "≤large") {
+    --gridCol: 3 / 11;
+    --gridRow: 2 / 3;
+  }
+@include media(">large", "≤xLarge") {
+  --gridCol: 2 / 8;
+}
+  @include media(">xLarge") {
+    --gridCol: 2 / 7;
+  }
+}
+
+.giftCard  {
+  position: relative;
+  z-index: 1;
+  --gridRow: 1 / 4;
+  z-index: 0;
+  @include media("≤small") {
+    --gridCol: 1 / 7;
+    --gridRow: 1 / 2;
+    margin-bottom: 2rem;
+  }
+  @include media(">small", "≤medium") {
+    --gridCol: 3 / 11;
+    --gridRow: 1 / 2;
+  }
+  @include media(">medium", "≤large") {
+    --gridCol: 3 / 11;
+    --gridRow: 2 / 2;
+  }
+  @include media(">large", "≤xLarge") {
+    --gridCol: 7 / 12;
+    --gridRow: 1 / 4;
+  }
+  @include media(">xLarge") {
+    --gridCol: 5 / 12;
+    --gridRow: 1 / 4;
+  }
+}
+
+
 
 .nameHeader, .aboutMeText p, .photoHeaderText p {
   width: 100%;
