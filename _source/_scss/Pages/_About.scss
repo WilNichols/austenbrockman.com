@@ -111,7 +111,10 @@
     }
   }
   & > * {
-    margin-bottom: 1.5rem;
-    // this should match the line-height
+    @extend .bigText;
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+      // this should match the line-height
+    }
   }
 }
