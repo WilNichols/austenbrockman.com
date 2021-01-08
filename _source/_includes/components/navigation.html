@@ -1,0 +1,6 @@
+<ul class="navLinks">
+   <li><a class="{% if page.url == '/index.html' or page.url == '/' or page.url == '' %}active{% endif %}" href="{{ '/' | relative_url }}">About</a></li>
+   <li><a class="{% if page.url == '/projects.html' %}active{% endif %}" href="{{ '/projects.html' | relative_url }}">Projects</a></li>
+   <li><a class="{% if page.url == '/mondays.html' %}active{% endif %}" href="{{ '/mondays.html' | relative_url }}">Makeover Mondays</a></li>
+   <li><a href="mailto:">Contact</a></li>
+</ul>

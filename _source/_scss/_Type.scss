@@ -13,7 +13,7 @@ H1, %H1 {
   font-weight: 600;
   @extend %fontSize;
   font-size: min(10vw, var(--font-size));
-  color: var(--theme-gray-further);
+  color: var(--theme-text);
   @include media("≤xxSmall") {
     --rem: 2.5;
     --lineHeight: 1em;
@@ -27,7 +27,7 @@ H1, %H1 {
     --lineHeight: 1.125em;
   }
   @include media(">medium") {
-    --rem: 7;
+    --rem: 6;
     --lineHeight: 1.125em;
   }
   @include media('print') {
@@ -308,10 +308,7 @@ body {
   p, span {
       display: inline;
       // for some reason, this has to be defined here for the transition to not be delayed
-      color: var(--theme-gray-further);
-  }
-  a {
-    display: inline;
+      color: var(--theme-text);
   }
 }
 

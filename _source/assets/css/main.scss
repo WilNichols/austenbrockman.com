@@ -32,7 +32,7 @@
 }
 
 body {
-  background-color: var(--accentColor);
+  background-color: var(--theme-background);
   @include share(margin, padding, 0);
   min-height: 100vh;
   display: grid;
@@ -40,26 +40,42 @@ body {
   
 }
 
+
 a {
   text-decoration: none;
-  color: var(--tint-strong-color);
-  &.twitterLink {
-    color: var(--twitterColor);
+  position: relative;
+  overflow: visible;
+  white-space: nowrap;
+  display: inline-block;
+  color: var(--theme-link, #fff);
+  transform: var(--transform, none);
+  &::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    @include share(right, left, -6px);
+    bottom: -4px;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 4px;
+    z-index: -1;
+    opacity: var(--opacity, 0);
   }
-  &.linkedInLink {
-    color: var(--linkedInColor);
+  &::after {
+    content: '';
+    position: absolute;
+    height: .125rem;
+    @include share(right, bottom, left, 0);
+    background-color: $c--accent-P3;
+    z-index: 10;
+    border-radius: .0625rem;
+    transform: var(--transformLine, none);
   }
-  &.instagramLink {
-    color: var(--instagramColor);
-  }
-  &.gitHubLink {
-    color: var(--gitHubColor);
-  }
-  &.dribbbleLink {
-    color: var(--dribbbleColor);
+  &:hover, &.active {
+    --opacity: 1;
+    --transform: skewX(-4deg) scaleX(.98);
+    --transformLine: translateY(2px) scaleX(.95);
   }
 }
-
 ::selection {
   background: var(--selectionColor, var(--positive-color));
   color: var(--negative-color);
@@ -73,7 +89,7 @@ a {
 }
 
 .pageContent {
-  padding: 0 var(--viewport-padding);
+  padding: var(--viewport-padding);
 }
   
 // make text elements selectable
@@ -82,6 +98,60 @@ p, a:not(.blockLink), h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhotoSet
   svg {
     @include user-select(none);
   }
+}
+
+.links, .navLinks {
+  list-style: none;
+  display: grid;
+  // this will need to adjust with font size
+  height: 2.1875rem;
+  align-content: end;
+  li {
+    grid-gap: 3rem;
+    color: var(--theme-text);
+    grid-row: 1 / 2;
+    a {
+      color: var(--theme-text);
+    }
+  }
+}
+
+.navLinks {
+  --gridRow: 1 / 2;
+  --gridCol: 2 / 7;
+}
+
+// Common 
+
+%resetTo100VW {
+  width: calc(100% + var(--viewport-padding)*2);
+  margin: 0 calc(var(--viewport-padding)*-1);
+}
+
+%resetToFull {
+  @extend %resetTo100VW;
+  --minWidth: calc(#{$unit--breakpoint-xlarge} + var(--viewport-padding)*2);
+  min-width: var(--minWidth);
+  
+}
+
+.fullWidthSection {
+  position: relative;
+  padding: 0 var(--viewport-padding);
+  @extend %resetTo100VW;
+   @include media("≤small") {
+    --minWidth: 100%;
+  }
+}
+
+.contentWrapper {
+  @extend %wrapper; 
+  position: relative;
+}
+
+.contentContainer {
+  @extend %grid;
+  align-items: center;
 }
 
 .footer {
@@ -96,7 +166,4 @@ p, a:not(.blockLink), h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhotoSet
   }
 }
 
-
-@import "Pages/Work";
-@import "Pages/Xmas";
-
+@import "Pages/About";

@@ -8,8 +8,10 @@ $c--D_gray_closer: #262729;
 $c--black: #0D0D0D;
 $c--white: #fff;
 
-
-$c--accent: #FFD608;
-$c--accent-P3: color(display-p3 1 .8431 .0314 / 1);
-$c--accent_mid: #CC5C00;
-$c--accent_mid-P3: color(display-p3 .8 .3608 0 / 1);
+$c--accent_lightest: #FFFFFF;
+$c--accent_light: #EBF6EF;
+$c--accent_light-P3: color(display-p3 calc(235/255) calc(246/255) calc(239/255) / 1);
+$c--accent: #6FA898;
+$c--accent-P3: color(display-p3 calc(111/255) calc(168/255) calc(152/255) / 1);
+$c--accent_dark: #2D6656;
+$c--accent_dark-P3: color(display-p3 calc(45/255) calc(102/255) calc(86/255) / 1);

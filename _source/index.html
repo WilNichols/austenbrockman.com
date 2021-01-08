@@ -3,15 +3,17 @@ layout: default
 pageType: index
 ---
 
-<section class="fullWidthSection nonWrappingSection">
-  <div class="contentWrapper">
-    <div class="aboutMeContainer">
-      
-        <span class="pageHeader">
-          <h1>Hi, I'm <span class="textInverted">Austen</span></h1>
-        </span>
-        <p class="bigText">And I'm starting my career in data science. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dictum volutpat facilisis. Sed consequat justo vitae justo luctus pulvinar a ut libero.</p>  
-      
+<section class="fullWidthSection aboutMeSection">
+  <div class="contentWrapper aboutMe">
+    <div class="contentContainer">
+      {% include components/navigation.html %}
+      <span class="pageHeader">
+        <h1>Hi, I'm <span class="textInverted">Austen</span></h1>
+      </span>
+      <div class="heroText">
+        <p class="bigText">And I'm starting my career in data science.</p>  
+        <ul class="links"><li><a href="https://drive.google.com/file/d/1ix1RYhuELTcbAP2mq0pdW94UNg6v9GHe/view?usp=sharing" target="blank">Résumé</a></li><li><a href="" target="blank">LinkedIn</a></li><li><a href="" target="blank">GitHub</a></li><li><a href="" target="blank">Tableau</a></li></ul>
+      </div>
       <div class="heroPhoto">
         {%  include components/blog-photo-inline.html 
             imagePath="/assets/img/" 
@@ -21,6 +23,14 @@ pageType: index
             alt="This is my face." 
         %}
       </div>
+    </div>
+  </div>
+</section>
+<section class="fullWidthSection aboutMeExtendedSection">
+  <div class="contentWrapper aboutMeExtended">
+    <div class="contentContainer">
+      <p class="bigText">Growing up, I dreamed of being a geneticist. This dream led me to the <a href="https://tams.unt.edu/" target="blank">Texas Academy of Math and Science at UNT</a> at the ripe age of 16, then to the University of Texas at Austin, where I earned a B.Sc in Biochemistry with honors while doing part-time research as a part of the <a href="https://cns.utexas.edu/fri" target="blank">Freshman Research Initiative</a>. Graduation shot me abroad to Leuven, Belgium, where I earned a full scholarship to pursue a M.Sc in Biology at one of Europe’s top Universities. <a href="https://drive.google.com/file/d/1UJtUa0SqMb8RUkxDKe589k0sg-qGKdD3/view?usp=sharing">See my thesis presentation here!</a></p>  
+      <p class="bigText">It was during my final year of my Master’s that I realized my passion for analytics.  When you think about it, what is the genetic code if not nature’s greatest database? I spent hours that felt like seconds reworking my research data, uncovering every possible connection. After spending a year pursuing my interest in food, the decision to become a data professional was an easy one. My passion for data combined with extensive coursework in Excel, Python, R, statistical modeling, research design, and science communication gives me an edge when it comes to developing in-depth understanding of data and generating actionable insights. I have since fleshed out my skill set - via resources such as Dataquest and Coursera, but mainly through practice -  to become an expert in SQL and Tableau, as well as analytics-specific Excel and Python libraries.</p>
     </div>
   </div>
 </section>

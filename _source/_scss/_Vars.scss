@@ -32,7 +32,6 @@
   
   //spacer as padding
   --paddingGridSpacer: min(116px, calc((var(--gutter) * 2) + (var(--minColumnWidth) + (var(--gutter) * 2))/2));;
-  
 }
 
 $spanColumns: calc((var(--columnCount) * var(--minColumnWidth)) + ((var(--columnCount) - 1) * var(--gutter)));
@@ -40,23 +39,23 @@ $spanColumns: calc((var(--columnCount) * var(--minColumnWidth)) + ((var(--column
 //theme vars
 :root {
   @include themedColor(
-  --theme-light, 
-    #{$c--white}, 
-    #{$c--white}, 
-    #{$c--white}, 
-    #{$c--white}
+  --theme-text, 
+    #{$c--accent_dark}, 
+    #{$c--accent_dark-P3}, 
+    #{$c--accent_light}, 
+    #{$c--accent_light-P3}
   );
   @include themedColor(
-  --theme-dark, 
-    #{$c--black}, 
-    #{$c--black}, 
-    #{$c--black}, 
-    #{$c--black}
+  --theme-background, 
+    #{$c--accent_light}, 
+    #{$c--accent_light-P3},
+    #{$c--accent_dark}, 
+    #{$c--accent_dark-P3}
   );
   @include themedColor(
-  --negative-color, 
-    #{$c--white}, 
-    #{$c--white}, 
+  --theme-shadow, 
+    #{$c--accent}, 
+    #{$c--accent-P3},
     #{$c--white}, 
     #{$c--white}
   );
@@ -88,13 +87,7 @@ $spanColumns: calc((var(--columnCount) * var(--minColumnWidth)) + ((var(--column
     #{$c--accent},  
     #{$c--accent-P3}
   );
-@include themedColor(
-  --accentColorDark,
-    #{$c--accent_mid}, 
-    #{$c--accent_mid-P3}, 
-    #{$c--accent_mid},  
-    #{$c--accent_mid-P3}
-  );
+
   @include themedColor(
   --theme-debug,
     red, 
@@ -102,10 +95,4 @@ $spanColumns: calc((var(--columnCount) * var(--minColumnWidth)) + ((var(--column
     red,  
     red,  
   );
-  // 3rd-party
-  --twitterColor: #38A1F3;
-  --linkedInColor: #0077B5;
-  --gitHubColor: #0366d6;
-  --instagramColor: #C13584;
-  --dribbbleColor: #ea4c89;
 }
