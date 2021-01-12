@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  {%- include head.html -%}
+<body class="{{ page.pageType }} {{ page.title | remove: " " }}">
+  {% if jekyll.environment != 'production' %}
+    {%- include debug.html -%}
+  {% endif %}
+  <main class="pageContent">
+    <section class="fullWidthSection projectHeaderSection">
+      <div class="contentWrapper projectHeader">
+        <div class="contentContainer">
+          {% include components/navigation.html %}
+          {% for post in site.categories.mondays limit:1%}
+            {{ post.content }}
+            <p>{{ post.description }}<br><a href="https://public.tableau.com/profile/austen.brockman#!/" target="blank">View more on Tableau</a></p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <section class="fullWidthSection projectIndexSection">
+      <div class="contentWrapper projectIndex">
+        <div class="contentContainer">
+          <h2>Projects</h2>
+          <ul class="projects">
+            {% for post in site.categories.projects %}
+              <li class="project"><a href="{{ post.url }}">
+                {{ post.name }}
+                <ul class="skills">
+                  {% for skill in post.skills %}
+                    <li class="skill">{{ skill }}</li>
+                  {% endfor %}
+                </ul>
+                <p>{{ post.content }}</p>
+              </a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

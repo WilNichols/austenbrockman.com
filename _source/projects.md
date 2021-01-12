@@ -1,9 +1,8 @@
 ---
-layout: index
-pageTitle: About
-header: Hi, I'm <b>Austen</b>
-subtitle: And I'm starting my career in data analytics.
-permalink: '/'
+layout: projects
+pageTitle: Projects
+header: Projects
+permalink: '/projects'
 ---
 Growing up, I dreamed of being a geneticist. This dream led me to the [Texas Academy of Math and Science at UNT](https://tams.unt.edu/){:target="_blank"} at the ripe age of 16, then to the University of Texas at Austin, where I earned a B.Sc in Biochemistry with honors while doing part-time research as a part of the [Freshman Research Initiative](https://cns.utexas.edu/fri){:target="_blank"}. Graduation shot me abroad to Leuven, Belgium, where I earned a full scholarship to pursue a M.Sc in Biology at one of Europe’s top Universities. [See my thesis presentation here!](https://drive.google.com/file/d/1UJtUa0SqMb8RUkxDKe589k0sg-qGKdD3/view?usp=sharing){:target="_blank"}
 

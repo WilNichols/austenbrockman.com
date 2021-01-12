@@ -45,10 +45,14 @@ a {
   text-decoration: none;
   position: relative;
   overflow: visible;
-  white-space: nowrap;
+  white-space: nowrap; 
   display: inline-block;
   color: var(--theme-link, #fff);
   transform: var(--transform, none);
+  .project & {
+    white-space: normal;  
+    overflow: hidden;
+  }
   &::before {
     content: '';
     position: absolute;
@@ -103,19 +107,27 @@ p, a:not(.blockLink), h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhotoSet
 .links, .navLinks {
   list-style: none;
   display: grid;
+  grid-gap: $unit--spacing;
   // this will need to adjust with font size
   height: 2.1875rem;
   align-content: end;
+  grid-template-columns: repeat(4, 1fr);
   li {
     grid-gap: 3rem;
     color: var(--theme-text);
     grid-row: 1 / 2;
+    grid-column: var(--colStart)/var(--colEnd);
     a {
       color: var(--theme-text);
     }
   }
+  @for $i from 1 through 4 {
+    li:nth-of-type(#{$i}) {
+      --colStart: #{$i};
+      --colEnd: #{$i} / #{$i + 1};
+    }
+  }
 }
-
 .navLinks {
   --gridRow: 1 / 2;
   --gridCol: 2 / 7;
