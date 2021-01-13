@@ -101,9 +101,7 @@
 }
 
 .heroPhoto {
-  background-image: url("/assets/img/me.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  @include image-set-3('/assets/img/me', 'jpg');
 }
 
 .aboutMeSection, .projectHeaderSection {
