@@ -107,7 +107,7 @@
 }
 
 .aboutMeSection, .projectHeaderSection {
-  margin-bottom: var(--viewport-padding);
+  margin-bottom: calc(var(--viewport-padding) * 1.5);
 }
 
 .aboutMeExtended .contentContainer {
@@ -123,6 +123,12 @@
 }
 
 .projectHeader > .contentContainer {
+  & > .navLinks {
+    margin-bottom: var(--viewport-padding);
+  }
+  & > h3 {
+    --gridRow: 2 / 3 !important;
+  }
   & > .tableauPlaceholder {
     z-index: 9999999;
   }
@@ -130,7 +136,6 @@
     display: flex !important;
     width: unset !important;
     justify-content: flex-start;
-    margin-top: var(--viewport-padding);
     #graph-shadow {
       @extend %shadow;
     }
@@ -139,25 +144,31 @@
     --gridCol: 2 / 11;
   }  
   & > p {
-    margin-top: calc(var(--viewport-padding) + 2.1875rem);
     font-size: .75rem;
-    height: 100%;
+    align-self: flex-start;
     // responsive
     --gridRow: 2 / 3;
     --gridCol: 11 / 13;
   }  
 }
 
-.projectIndex > .contentContainer {
-  h2 {
-    // responsive
+.projectIndex, .projectHeader {
+  h3 {
+    --gridCol: 1 / 2;
     --gridRow: 1 / 2;
-    --gridCol: 2 / 12;
+    opacity: 0.25;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    align-self: flex-start;
   }
+}
+
+.projectIndex > .contentContainer {
   .projects {
     @extend %grid;
     // responsive
-    --gridRow: 2 / 3;
+    --gridRow: 1 / 2;
     --gridCol: 1 / 13;
     
   }
@@ -167,6 +178,7 @@
     // responsive
     &:nth-child(1), &:nth-child(2) {
       --gridRow:  1 / 2;
+      margin-top: 0 !important;
     }
     &:nth-child(3), &:nth-child(4) {
       --gridRow:  2 / 3;

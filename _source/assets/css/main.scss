@@ -109,7 +109,27 @@ p, a:not(.blockLink), b, h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhoto
     color: var(--theme-text);
   }
   // responsive
-  grid-template-columns: repeat(4, 1fr);
+}
+
+.navLinks {
+  // responsive
+  --gridRow: 1 / 2;
+  --gridCol: 1 / 13;
+  @extend %grid;
+  li {
+    grid-row: 1 / 2;
+    grid-column: var(--colStart)/var(--colEnd);
+  }
+  @for $i from 1 through 4 {
+    li:nth-of-type(#{$i}) {
+      --colStart: #{$i + 1};
+      --colEnd: #{$i + 2};
+    }
+  }
+}
+
+.links {
+  grid-template-columns: repeat(5, 1fr);
   li {
     grid-row: 1 / 2;
     grid-column: var(--colStart)/var(--colEnd);
@@ -120,12 +140,6 @@ p, a:not(.blockLink), b, h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhoto
       --colEnd: #{$i} / #{$i + 1};
     }
   }
-}
-
-.navLinks {
-  // responsive
-  --gridRow: 1 / 2;
-  --gridCol: 2 / 7;
 }
 
 // Common 
