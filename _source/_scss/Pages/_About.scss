@@ -1,8 +1,10 @@
 // Section: About
 
 .aboutMe .contentContainer::after {
+  // this is a spacer that matches the size of the navlinks so as to center the header content
   content: '';
   height: 2.1875rem;
+  // responsive
   grid-column: 2 / 7;
   grid-row: 6 / 7;
   
@@ -10,9 +12,11 @@
 .pageHeader {
   position: relative;
   z-index: 1;
-  --gridRow: 3 / 4;
+  
   margin-bottom: 1rem;
   z-index: 1000;
+  // responsive
+  --gridRow: 3 / 4; 
   @include media("≤small") {
     --gridCol: 1 / 7;
     --gridRow: 2 / 3;
@@ -28,6 +32,7 @@
 .heroText {
   position: relative;
   z-index: 1;
+  // responsive
   --gridRow: 4 / 5;
   @include media("≤small") {
     --gridCol: 1 / 7;
@@ -86,6 +91,7 @@
     margin-top: -50%;
     opacity: 0.33;
   } 
+  // responsive
 }
 
 .heroPhoto img {
@@ -105,18 +111,14 @@
 }
 
 .aboutMeExtended .contentContainer {
-  @for $i from 1 through 4 {
-    & > *:nth-child(#{$i}) {
-      --gridCol: 3 / 11;
-      --gridRow: #{$i} / #{$i + 1};
-    }
-  }
   & > * {
     @extend .bigText;
     &:not(:last-child) {
       margin-bottom: 1.5rem;
       // this should match the line-height
     }
+    // responsive
+    --gridCol: 3 / 11;
   }
 }
 
@@ -125,8 +127,6 @@
     z-index: 9999999;
   }
   & > .tableauPlaceholder, & > .graph-shadow-container {
-    --gridRow: 2 / 3;
-    --gridCol: 2 / 11;
     display: flex !important;
     width: unset !important;
     justify-content: flex-start;
@@ -134,29 +134,37 @@
     #graph-shadow {
       @extend %shadow;
     }
+    // responsive
+    --gridRow: 2 / 3;
+    --gridCol: 2 / 11;
   }  
   & > p {
-    --gridRow: 2 / 3;
-    --gridCol: 11 / 13;
     margin-top: calc(var(--viewport-padding) + 2.1875rem);
     font-size: .75rem;
     height: 100%;
+    // responsive
+    --gridRow: 2 / 3;
+    --gridCol: 11 / 13;
   }  
 }
 
 .projectIndex > .contentContainer {
   h2 {
+    // responsive
     --gridRow: 1 / 2;
     --gridCol: 2 / 12;
   }
   .projects {
     @extend %grid;
+    // responsive
     --gridRow: 2 / 3;
     --gridCol: 1 / 13;
+    
   }
   .project {
     margin-top: $unit--spacing;
     list-style: none;
+    // responsive
     &:nth-child(1), &:nth-child(2) {
       --gridRow:  1 / 2;
     }
@@ -173,7 +181,7 @@
       --gridCol: 7 / 11;
     }
     .skills {
-      font-size: .875rem;
+      font-size: .75rem;
     } 
     .skill {
       display: inline;

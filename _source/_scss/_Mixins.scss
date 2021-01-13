@@ -62,27 +62,3 @@
     }
   }
 }
-
-@keyframes FSPulseStart {
-  0% {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  50% {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  100% {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-}
-
-@keyframes comparisonSliderPulse {
-  0% {
-    background-color: var(--tint-strong-color);
-  }
-  50% {
-    background-color: var(--theme-gray-closer);
-  }
-  100% {
-    background-color: var(--tint-strong-color);
-  }
-}

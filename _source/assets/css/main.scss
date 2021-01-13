@@ -37,9 +37,7 @@ body {
   min-height: 100vh;
   display: grid;
   place-content: center;
-  
 }
-
 
 a {
   text-decoration: none;
@@ -47,19 +45,15 @@ a {
   overflow: visible;
   white-space: nowrap; 
   display: inline-block;
-  color: var(--theme-link, #fff);
+  color: var(--theme-links);
   transform: var(--transform, none);
-  .project & {
-    white-space: normal;  
-    overflow: hidden;
-  }
   &::before {
     content: '';
     position: absolute;
     top: -1px;
     @include share(right, left, -6px);
     bottom: -4px;
-    background-color: rgba(0,0,0,0.1);
+    background-color: var(--theme-links-background);
     border-radius: 4px;
     z-index: -1;
     opacity: var(--opacity, 0);
@@ -69,26 +63,26 @@ a {
     position: absolute;
     height: .125rem;
     @include share(right, bottom, left, 0);
-    background-color: $c--accent-P3;
+    background-color: var(--theme-links-decoration);
     z-index: 10;
     border-radius: .0625rem;
     transform: var(--transformLine, none);
   }
   &:hover, &.active {
-    --opacity: 1;
+    --opacity: .125;
     --transform: skewX(-4deg) scaleX(.98);
     --transformLine: translateY(2px) scaleX(.95);
   }
 }
 ::selection {
-  background: var(--selectionColor, var(--positive-color));
-  color: var(--negative-color);
+  background: var(--theme-selectionBackgroundColor);
+  color: var(--theme-selectionTextColor);
   text-shadow: none;
 }
 
 ::-moz-selection {
-  background: var(--positive-color);
-  color: var(--negative-color);
+  background: var(--theme-selectionBackgroundColor);
+  color: var(--selectionTextColor);
   text-shadow: none;
 }
 
@@ -97,7 +91,7 @@ a {
 }
   
 // make text elements selectable
-p, a:not(.blockLink), h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhotoSetTitle, .featuredPhotoSetDate, .photoSetTitle, .photoSetDate, .postTags, .postDateLarge, .postDate, .postDateSmall, .footerContent, .footerCopyright, li.tag, input, button, li, .resumeJobTitle {
+p, a:not(.blockLink), b, h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhotoSetTitle, .featuredPhotoSetDate, .photoSetTitle, .photoSetDate, .postTags, .postDateLarge, .postDate, .postDateSmall, .footerContent, .footerCopyright, li.skill, ul.skills, input, button, li, .resumeJobTitle {
   @include user-select(text);
   svg {
     @include user-select(none);
@@ -111,15 +105,14 @@ p, a:not(.blockLink), h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhotoSet
   // this will need to adjust with font size
   height: 2.1875rem;
   align-content: end;
+  li {
+    color: var(--theme-text);
+  }
+  // responsive
   grid-template-columns: repeat(4, 1fr);
   li {
-    grid-gap: 3rem;
-    color: var(--theme-text);
     grid-row: 1 / 2;
     grid-column: var(--colStart)/var(--colEnd);
-    a {
-      color: var(--theme-text);
-    }
   }
   @for $i from 1 through 4 {
     li:nth-of-type(#{$i}) {
@@ -128,7 +121,9 @@ p, a:not(.blockLink), h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhotoSet
     }
   }
 }
+
 .navLinks {
+  // responsive
   --gridRow: 1 / 2;
   --gridCol: 2 / 7;
 }
@@ -144,7 +139,6 @@ p, a:not(.blockLink), h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhotoSet
   @extend %resetTo100VW;
   --minWidth: calc(#{$unit--breakpoint-xlarge} + var(--viewport-padding)*2);
   min-width: var(--minWidth);
-  
 }
 
 .fullWidthSection {

@@ -23,15 +23,15 @@
           <h2>Projects</h2>
           <ul class="projects">
             {% for post in site.categories.projects %}
-              <li class="project"><a href="{{ post.url }}">
-                {{ post.name }}
+              <li class="project">
+                <h5>{{ post.name }}</h5>
                 <ul class="skills">
                   {% for skill in post.skills %}
                     <li class="skill">{{ skill }}</li>
                   {% endfor %}
                 </ul>
-                <p>{{ post.content }}</p>
-              </a></li>
+                <p>{{ post.content }} <a href="{{ post.link }}">Read Case Study</a></p>
+              </li>
             {% endfor %}
           </ul>
         </div>

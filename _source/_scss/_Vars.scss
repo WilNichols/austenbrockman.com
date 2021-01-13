@@ -46,39 +46,46 @@ $spanColumns: calc((var(--columnCount) * var(--minColumnWidth)) + ((var(--column
     #{$c--accent_light-P3}
   );
   @include themedColor(
+  --theme-selectionTextColor, 
+    #{$c--accent_light}, 
+    #{$c--accent_light-P3}, 
+    #{$c--accent_dark}, 
+    #{$c--accent_dark-P3}
+  );
+@include themedColor(
+  --theme-selectionBackgroundColor, 
+    #{$c--accent_dark}, 
+    #{$c--accent_dark}, 
+    #{$c--accent_light}, 
+    #{$c--accent_light}, 
+  );
+  @include themedColor(
+  --theme-links, 
+    #{$c--accentSecondary_dark}, 
+    #{$c--accentSecondary_dark-P3}, 
+    #{$c--accentSecondary_light}, 
+    #{$c--accentSecondary_light-P3}
+  );
+@include themedColor(
+  --theme-links-decoration, 
+    #{$c--accentSecondary}, 
+    #{$c--accentSecondary-P3}, 
+    #{$c--accentSecondary}, 
+    #{$c--accentSecondary-P3}
+  );
+@include themedColor(
+  --theme-links-background, 
+    #{$c--accent}, 
+    #{$c--accent-P3}, 
+    #{$c--accent}, 
+    #{$c--accent-P3}
+  );  
+  @include themedColor(
   --theme-background, 
     #{$c--accent_light}, 
     #{$c--accent_light-P3},
     #{$c--accent_dark}, 
     #{$c--accent_dark-P3}
-  );
-  @include themedColor(
-  --theme-shadow, 
-    #{$c--accent}, 
-    #{$c--accent-P3},
-    #{$c--white}, 
-    #{$c--white}
-  );
-  @include themedColor(
-  --positive-color, 
-    #{$c--black}, 
-    #{$c--black}, 
-    #{$c--black}, 
-    #{$c--black}
-  );
-  @include themedColor(
-  --white-color, 
-    #{$c--white}, 
-    #{$c--white}, 
-    #{$c--white}, 
-    #{$c--white}
-  );
-  @include themedColor(
-  --black-color, 
-    #{$c--black}, 
-    #{$c--black}, 
-    #{$c--black}, 
-    #{$c--black}
   );
   @include themedColor(
   --accentColor,

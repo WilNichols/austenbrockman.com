@@ -1,17 +1,19 @@
-$c--D_gray_further: #FAFCFF;
-$c--D_gray_far: #C8D0E0;
-$c--D_gray_base: #ABB5C7;
-$c--D_gray_close: #36383D;
-$c--D_gray_closer: #262729;
-
-
-$c--black: #0D0D0D;
+$c--black: #000;
 $c--white: #fff;
 
-$c--accent_lightest: #FFFFFF;
+$c--lightest: #FFFFFF;
 $c--accent_light: #EBF6EF;
 $c--accent_light-P3: color(display-p3 calc(235/255) calc(246/255) calc(239/255) / 1);
 $c--accent: #6FA898;
 $c--accent-P3: color(display-p3 calc(111/255) calc(168/255) calc(152/255) / 1);
 $c--accent_dark: #2D6656;
 $c--accent_dark-P3: color(display-p3 calc(45/255) calc(102/255) calc(86/255) / 1);
+
+$c--accentSecondary_light: #FAEDF4;
+$c--accentSecondary_light-P3: color(display-p3 calc(250/255) calc(237/255) calc(244/255) / 1);
+$c--accentSecondary: #BF7581;
+$c--accentSecondary-P3: color(display-p3 calc(191/255) calc(117/255) calc(129/255) / 1);
+$c--accentSecondary_dark: #802E3C;
+$c--accentSecondary_dark-P3: color(display-p3 calc(128/255) calc(46/255) calc(60/255) / 1);
+
+

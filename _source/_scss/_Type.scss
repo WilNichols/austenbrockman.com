@@ -1,6 +1,7 @@
 body {
   font-family: obviously, sans-serif;
   font-style: normal;
+  color: var(--theme-text);
 }
 
 %fontSize {
@@ -13,7 +14,7 @@ H1, %H1 {
   font-weight: 600;
   @extend %fontSize;
   font-size: min(10vw, var(--font-size));
-  color: var(--theme-text);
+  
   @include media("≤xxSmall") {
     --rem: 2.5;
     --lineHeight: 1em;
@@ -41,7 +42,6 @@ H1, %H1 {
 H2, %H2 {
   font-weight: 900;
   @extend %fontSize;
-  color: var(--theme-gray-further);
   @include media("≤xxSmall") {
     --rem: 2;
     --lineHeight: 1em;
@@ -68,7 +68,7 @@ H2, %H2 {
 H3, %H3 {
   font-weight: 800;
   @extend %fontSize;
-  color: var(--theme-gray-far);
+  
    @include media("≤xxSmall") {
     --rem: 1.375;
     line-height: 1.364em;
@@ -98,7 +98,7 @@ H3, %H3 {
 H4, %H4 {
   font-weight: 600;
   @extend %fontSize;
-  color: var(--theme-gray-further);
+  
   @include media("≤xxSmall") {
     --rem: 1.125;
     --lineHeight: 1.111em;
@@ -124,7 +124,7 @@ H4, %H4 {
   
   font-weight: 600;
   @extend %fontSize;
-  color: var(--theme-gray-base);
+  
   @include media("≤xxSmall") {
     --rem: .875;
     --lineHeight: 1em;
@@ -149,7 +149,7 @@ H4, %H4 {
   
   font-weight: 600;
   @extend %fontSize;
-  color: var(--theme-gray-base);
+  
   @include media("≤xxSmall") {
     --rem: .875;
     --lineHeight: 1em;
@@ -172,7 +172,7 @@ H4, %H4 {
 figcaption, .caption, .caption *, %caption {
   font-weight: 400;
   @extend %fontSize;
-  color: var(--theme-gray-base);
+  
   @include media("≤xxSmall") {
     --rem: .875;
     line-height: 1.4428em;
@@ -197,7 +197,7 @@ footer, .footer {
   
   font-weight: 400;
   @extend %fontSize;
-  color: var(--theme-gray-further);
+  
   z-index: 10;
   position: relative;
   @include media("≤medium") {
@@ -220,7 +220,7 @@ blockquote {
   
   font-weight: 400;
   @extend %fontSize;
-  color: var(--theme-gray-further);
+  
   @include media("≤small") {
     --rem: 1.25;
     --lineHeight: 1.25em;
@@ -304,7 +304,7 @@ blockquote {
 body {
   @extend %default;
   @extend %paragraphText;
-  color: var(--theme-gray-further);
+  
   p, span {
       display: inline;
       // for some reason, this has to be defined here for the transition to not be delayed
@@ -314,10 +314,10 @@ body {
 
 .asideText p, .asideText li {
   @include media("≤medium") {
-    color: var(--theme-gray-further);
+    
   }
   @include media(">medium") {
-    color: var(--theme-gray-base);
+    
   }
 }
 
