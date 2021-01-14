@@ -7,7 +7,7 @@
 %grid {
   display: grid;
   grid-column-gap: var(--gutter);
-  align-items: start;
+  align-items: flex-start;
   grid-template-columns: var(--gridCols);
   @include media("≤small") { 
     --gridCols: repeat(var(--gridColsMin), 1fr);
@@ -63,6 +63,7 @@
 %shadow {
   position: relative;
   &::after {
+    z-index: -1;
     will-change: opacity transform; 
     content: '';
     display: block;

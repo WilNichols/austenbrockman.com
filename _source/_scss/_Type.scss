@@ -13,22 +13,25 @@ body {
 H1, %H1 {
   font-weight: 600;
   @extend %fontSize;
-  font-size: min(10vw, var(--font-size));
-  
-  @include media("≤xxSmall") {
-    --rem: 2.5;
-    --lineHeight: 1em;
-  }
-  @include media(">xxSmall", "≤small") {
+ @include media("≤small") {
     --rem: 3;
     --lineHeight: 1.25em;
   }
   @include media(">small", "≤medium") {
-    --rem: 3.75;
+    --rem: 2.75;
     --lineHeight: 1.125em;
   }
-  @include media(">medium") {
+  @include media(">medium", "≤large") {
+    --rem: 3.25;
+    --lineHeight: 1.125em;
+  }
+  @include media(">large", "≤xLarge") {
+    --rem: 4.25;
+    --lineHeight: 1.125em;
+  }
+  @include media(">xLarge") {
     --rem: 6;
+    font-size: min(10vw, var(--font-size));
     --lineHeight: 1.125em;
   }
   @include media('print') {
@@ -42,11 +45,7 @@ H1, %H1 {
 H2, %H2 {
   font-weight: 900;
   @extend %fontSize;
-  @include media("≤xxSmall") {
-    --rem: 2;
-    --lineHeight: 1em;
-  }
-  @include media(">xxSmall", "≤small") {
+ @include media("≤small") {
     --rem: 2.5;
     --lineHeight: 1.125em;
   }
@@ -68,12 +67,7 @@ H2, %H2 {
 H3, %H3 {
   font-weight: 800;
   @extend %fontSize;
-  
-   @include media("≤xxSmall") {
-    --rem: 1.375;
-    line-height: 1.364em;
-  }
-  @include media(">xxSmall", "≤small") {
+ @include media("≤small") {
     --rem: 1.375;
     --lineHeight: 1.364em;
   }
@@ -98,11 +92,6 @@ H3, %H3 {
 H4, %H4 {
   font-weight: 600;
   @extend %fontSize;
-  
-  @include media("≤xxSmall") {
-    --rem: 1.125;
-    --lineHeight: 1.111em;
-  }
   @include media(">xxSmall", "≤medium") {
     --rem: 1.125;
     --lineHeight: 1.111em;
@@ -124,11 +113,6 @@ H4, %H4 {
   
   font-weight: 600;
   @extend %fontSize;
-  
-  @include media("≤xxSmall") {
-    --rem: .875;
-    --lineHeight: 1em;
-  }
   @include media(">xxSmall", "≤medium") {
     --rem: 1.125;
     line-height: 1.111em;
@@ -149,11 +133,6 @@ H4, %H4 {
   
   font-weight: 600;
   @extend %fontSize;
-  
-  @include media("≤xxSmall") {
-    --rem: .875;
-    --lineHeight: 1em;
-  }
   @include media(">xxSmall", "≤medium") {
     --rem: 1;
     line-height: 1.125em;
@@ -172,11 +151,6 @@ H4, %H4 {
 figcaption, .caption, .caption *, %caption {
   font-weight: 400;
   @extend %fontSize;
-  
-  @include media("≤xxSmall") {
-    --rem: .875;
-    line-height: 1.4428em;
-  }
   @include media(">xxSmall", "≤medium") {
     --rem: .875;
     --lineHeight: .1.428em;
@@ -241,11 +215,7 @@ blockquote {
 // navText
 %navText {
   @extend %fontSize;
-  @include media("≤xxSmall") {
-    --rem: .75;
-    --lineHeight: 1em;
-  }
-  @include media(">xxSmall", "≤small") {
+ @include media("≤small") {
     --rem: .875;
     --lineHeight: 1.25em;
   }
@@ -266,10 +236,22 @@ blockquote {
 
 %paragraphText {
   @include media("≤small") {
-    --rem: 1;
-    --lineHeight: 1.375em;
+    --rem: .75;
+    --lineHeight: 1.5em;
   }
-  @include media(">small") {
+  @include media(">small", "≤medium") {
+    --rem: .75;
+    line-height: 1.5em;
+  }
+  @include media(">medium", "≤large") {
+    --rem: .875;
+    --lineHeight: 1.5em;
+  }
+  @include media(">large", "≤xLarge") {
+    --rem: 1;
+    --lineHeight: 1.5em;
+  }
+  @include media(">xLarge") {
     --rem: 1;
     --lineHeight: 1.5em;
   }
@@ -283,14 +265,22 @@ blockquote {
   font-weight: var(--fontWeight, 400);
   @extend %fontSize;
   @include media("≤small") {
-    --rem: 1;
-    --lineHeight: 1.5em;
+    --rem: .875;
+    --lineHeight: 1.75em;
   }
   @include media(">small", "≤medium") {
-    --rem: 1.125;
-    line-height: 1.625em;
+    --rem: .875;
+    line-height: 1.75em;
   }
-  @include media(">medium") {
+  @include media(">medium", "≤large") {
+    --rem: 1;
+    --lineHeight: 1.75em;
+  }
+  @include media(">large", "≤xLarge") {
+    --rem: 1.25;
+    --lineHeight: 1.75em;
+  }
+  @include media(">xLarge") {
     --rem: 1.25;
     --lineHeight: 1.75em;
   }

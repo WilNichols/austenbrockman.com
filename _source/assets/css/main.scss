@@ -91,7 +91,7 @@ a {
 }
   
 // make text elements selectable
-p, a:not(.blockLink), b, h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhotoSetTitle, .featuredPhotoSetDate, .photoSetTitle, .photoSetDate, .postTags, .postDateLarge, .postDate, .postDateSmall, .footerContent, .footerCopyright, li.skill, ul.skills, input, button, li, .resumeJobTitle {
+p, a:not(.blockLink), b, h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhotoSetTitle, .featuredPhotoSetDate, .photoSetTitle, .photoSetDate, .postTags, .postDateLarge, .postDate, .postDateSmall, .footerContent, .footerCopyright, li.skill, ul.skills, input, button, li:not(.project), .resumeJobTitle {
   @include user-select(text);
   svg {
     @include user-select(none);
@@ -100,8 +100,10 @@ p, a:not(.blockLink), b, h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhoto
 
 .links, .navLinks {
   list-style: none;
-  display: grid;
-  grid-gap: $unit--spacing;
+  @extend %grid;
+  --gridColsMin: 4;
+  --gridColsMax: 8;
+  z-index: 99999;
   // this will need to adjust with font size
   height: 2.1875rem;
   align-content: end;
@@ -113,23 +115,25 @@ p, a:not(.blockLink), b, h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhoto
 
 .navLinks {
   // responsive
-  --gridRow: 1 / 2;
-  --gridCol: 1 / 13;
-  @extend %grid;
-  li {
-    grid-row: 1 / 2;
-    grid-column: var(--colStart)/var(--colEnd);
-  }
-  @for $i from 1 through 4 {
-    li:nth-of-type(#{$i}) {
-      --colStart: #{$i + 1};
-      --colEnd: #{$i + 2};
+  @include media("≤xSmall") {
+      --gridRow: 1 / 2;
+      --gridCol: 1 / 7;
+    }
+  @include media(">xSmall", "≤small") {
+    
+    --gridRow: 1 / 2;
+    //weird way to do this, but it works?
+    --gridCol: 1 / 7;
+    .aboutMeSection & {
+      --gridRow: 2 / 3;
+      transform: translateY(-3.5rem);
     }
   }
-}
 
-.links {
-  grid-template-columns: repeat(5, 1fr);
+  @include media(">small") {
+    --gridRow: 1 / 2;
+    --gridCol: 2 / 12;
+  }
   li {
     grid-row: 1 / 2;
     grid-column: var(--colStart)/var(--colEnd);
@@ -137,7 +141,27 @@ p, a:not(.blockLink), b, h1, h2, h3, h4, h5, h6, .aboutMeCaption, .featuredPhoto
   @for $i from 1 through 4 {
     li:nth-of-type(#{$i}) {
       --colStart: #{$i};
-      --colEnd: #{$i} / #{$i + 1};
+      --colEnd: #{$i + 1};
+    }
+  }
+}
+
+.links {
+  @include media("≤small") {
+    width: 100%;
+  }
+  @include media(">small") {
+    width: calc(200% + #{$unit--spacing});
+  }
+  
+  li {
+    grid-row: 1 / 2;
+    grid-column: var(--colStart)/var(--colEnd);
+  }
+  @for $i from 1 through 4 {
+    li:nth-of-type(#{$i}) {
+      --colStart: #{$i};
+      --colEnd: #{$i + 1};
     }
   }
 }
