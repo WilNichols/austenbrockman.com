@@ -1,5 +1,5 @@
 <ul class="navLinks">
    <li><a class="{% if page.url == '/' == '' %}active{% endif %}" href="{{ '/' | relative_url }}">About</a></li>
    <li><a class="{% if page.url == '/projects' %}active{% endif %}" href="{{ '/projects' | relative_url }}">Projects</a></li>
-   <li><a href="mailto:{{ site.email | encode_email }}">Contact</a></li>
+   <li><a href="/contact">Contact</a></li>
 </ul>
